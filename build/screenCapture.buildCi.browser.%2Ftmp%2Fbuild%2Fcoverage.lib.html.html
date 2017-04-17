@@ -1,7 +1,5 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <title>Code coverage report for node-npmtest-step/step/lib/step.js</title>
+<html lang="en"><head>
+    <title>Code coverage report for node-npmtest-step/node_modules/step/lib/step.js</title>
     <meta charset="utf-8">
     <style>
         body, html {
@@ -194,7 +192,7 @@
     <h1 style="font-weight: bold;">
         <a href="https://github.com/npmtest/node-npmtest-step">npmtest-step (v0.0.1)</a>
     </h1>
-    <h1>Code coverage report for <span class="entity">node-npmtest-step/step/lib/step.js</span></h1>
+    <h1>Code coverage report for <span class="entity">node-npmtest-step/node_modules/step/lib/step.js</span></h1>
     <h2>
         
         Statements: <span class="metric">9.84% <small>(6 / 61)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
@@ -210,11 +208,11 @@
         
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
-    <div class="path"><a href="../../../index.html">All files</a> &#187; <a href="index.html">node-npmtest-step/step/lib/</a> &#187; step.js</div>
+    <div class="path"><a href="../../../../index.html">All files</a> » <a href="index.html">node-npmtest-step/node_modules/step/lib/</a> » step.js</div>
 </div>
 <div class="body">
 <pre><table class="coverage">
-<tr><td class="line-count">1
+<tbody><tr><td class="line-count">1
 2
 3
 4
@@ -546,138 +544,139 @@ SOFTWARE.
 &nbsp;
 // Inspired by http://github.com/willconant/flow-js, but reimplemented and
 // modified to fit my taste and the node.JS error handling system.
-<span class="fstat-no" title="function not covered" >function Step() {</span>
-<span class="cstat-no" title="statement not covered" >  var steps = Array.prototype.slice.call(arguments),</span>
+<span class="fstat-no" title="function not covered">function Step() {</span>
+<span class="cstat-no" title="statement not covered">  var steps = Array.prototype.slice.call(arguments),</span>
       pending, counter, results, lock;
 &nbsp;
   // Define the main callback that's given as `this` to the steps.
-<span class="fstat-no" title="function not covered" >  function next() {</span>
-<span class="cstat-no" title="statement not covered" >    counter = pending = 0;</span>
+<span class="fstat-no" title="function not covered">  function next() {</span>
+<span class="cstat-no" title="statement not covered">    counter = pending = 0;</span>
 &nbsp;
     // Check if there are no steps left
-<span class="cstat-no" title="statement not covered" >    if (steps.length === 0) {</span>
+<span class="cstat-no" title="statement not covered">    if (steps.length === 0) {</span>
       // Throw uncaught errors
-<span class="cstat-no" title="statement not covered" >      if (arguments[0]) {</span>
-<span class="cstat-no" title="statement not covered" >        throw arguments[0];</span>
+<span class="cstat-no" title="statement not covered">      if (arguments[0]) {</span>
+<span class="cstat-no" title="statement not covered">        throw arguments[0];</span>
       }
-<span class="cstat-no" title="statement not covered" >      return;</span>
+<span class="cstat-no" title="statement not covered">      return;</span>
     }
 &nbsp;
     // Get the next step to execute
-<span class="cstat-no" title="statement not covered" >    var fn = steps.shift();</span>
-<span class="cstat-no" title="statement not covered" >    results = [];</span>
+<span class="cstat-no" title="statement not covered">    var fn = steps.shift();</span>
+<span class="cstat-no" title="statement not covered">    results = [];</span>
 &nbsp;
     // Run the step in a try..catch block so exceptions don't get out of hand.
-<span class="cstat-no" title="statement not covered" >    try {</span>
-<span class="cstat-no" title="statement not covered" >      lock = true;</span>
-<span class="cstat-no" title="statement not covered" >      var result = fn.apply(next, arguments);</span>
+<span class="cstat-no" title="statement not covered">    try {</span>
+<span class="cstat-no" title="statement not covered">      lock = true;</span>
+<span class="cstat-no" title="statement not covered">      var result = fn.apply(next, arguments);</span>
     } catch (e) {
       // Pass any exceptions on through the next callback
-<span class="cstat-no" title="statement not covered" >      next(e);</span>
+<span class="cstat-no" title="statement not covered">      next(e);</span>
     }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    if (counter &gt; 0 &amp;&amp; pending == 0) {</span>
+<span class="cstat-no" title="statement not covered">    if (counter &gt; 0 &amp;&amp; pending == 0) {</span>
       // If parallel() was called, and all parallel branches executed
       // synchronously, go on to the next step immediately.
-<span class="cstat-no" title="statement not covered" >      next.apply(null, results);</span>
-    } else <span class="cstat-no" title="statement not covered" >if (result !== undefined) {</span>
+<span class="cstat-no" title="statement not covered">      next.apply(null, results);</span>
+    } else <span class="cstat-no" title="statement not covered">if (result !== undefined) {</span>
       // If a synchronous return is used, pass it to the callback
-<span class="cstat-no" title="statement not covered" >      next(undefined, result);</span>
+<span class="cstat-no" title="statement not covered">      next(undefined, result);</span>
     }
-<span class="cstat-no" title="statement not covered" >    lock = false;</span>
+<span class="cstat-no" title="statement not covered">    lock = false;</span>
   }
 &nbsp;
   // Add a special callback generator `this.parallel()` that groups stuff.
-<span class="cstat-no" title="statement not covered" >  next.parallel = <span class="fstat-no" title="function not covered" >function () {</span></span>
-<span class="cstat-no" title="statement not covered" >    var index = 1 + counter++;</span>
-<span class="cstat-no" title="statement not covered" >    pending++;</span>
+<span class="cstat-no" title="statement not covered">  next.parallel = <span class="fstat-no" title="function not covered">function () {</span></span>
+<span class="cstat-no" title="statement not covered">    var index = 1 + counter++;</span>
+<span class="cstat-no" title="statement not covered">    pending++;</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    return <span class="fstat-no" title="function not covered" >function () {</span></span>
-<span class="cstat-no" title="statement not covered" >      pending--;</span>
+<span class="cstat-no" title="statement not covered">    return <span class="fstat-no" title="function not covered">function () {</span></span>
+<span class="cstat-no" title="statement not covered">      pending--;</span>
       // Compress the error from any result to the first argument
-<span class="cstat-no" title="statement not covered" >      if (arguments[0]) {</span>
-<span class="cstat-no" title="statement not covered" >        results[0] = arguments[0];</span>
+<span class="cstat-no" title="statement not covered">      if (arguments[0]) {</span>
+<span class="cstat-no" title="statement not covered">        results[0] = arguments[0];</span>
       }
       // Send the other results as arguments
-<span class="cstat-no" title="statement not covered" >      results[index] = arguments[1];</span>
-<span class="cstat-no" title="statement not covered" >      if (!lock &amp;&amp; pending === 0) {</span>
+<span class="cstat-no" title="statement not covered">      results[index] = arguments[1];</span>
+<span class="cstat-no" title="statement not covered">      if (!lock &amp;&amp; pending === 0) {</span>
         // When all parallel branches done, call the callback
-<span class="cstat-no" title="statement not covered" >        next.apply(null, results);</span>
+<span class="cstat-no" title="statement not covered">        next.apply(null, results);</span>
       }
     };
   };
 &nbsp;
   // Generates a callback generator for grouped results
-<span class="cstat-no" title="statement not covered" >  next.group = <span class="fstat-no" title="function not covered" >function () {</span></span>
-<span class="cstat-no" title="statement not covered" >    var localCallback = next.parallel();</span>
-<span class="cstat-no" title="statement not covered" >    var counter = 0;</span>
-<span class="cstat-no" title="statement not covered" >    var pending = 0;</span>
-<span class="cstat-no" title="statement not covered" >    var result = [];</span>
-<span class="cstat-no" title="statement not covered" >    var error = undefined;</span>
+<span class="cstat-no" title="statement not covered">  next.group = <span class="fstat-no" title="function not covered">function () {</span></span>
+<span class="cstat-no" title="statement not covered">    var localCallback = next.parallel();</span>
+<span class="cstat-no" title="statement not covered">    var counter = 0;</span>
+<span class="cstat-no" title="statement not covered">    var pending = 0;</span>
+<span class="cstat-no" title="statement not covered">    var result = [];</span>
+<span class="cstat-no" title="statement not covered">    var error = undefined;</span>
 &nbsp;
-<span class="fstat-no" title="function not covered" >    function check() {</span>
-<span class="cstat-no" title="statement not covered" >      if (pending === 0) {</span>
+<span class="fstat-no" title="function not covered">    function check() {</span>
+<span class="cstat-no" title="statement not covered">      if (pending === 0) {</span>
         // When group is done, call the callback
-<span class="cstat-no" title="statement not covered" >        localCallback(error, result);</span>
+<span class="cstat-no" title="statement not covered">        localCallback(error, result);</span>
       }
     }
-<span class="cstat-no" title="statement not covered" >    process.nextTick(check); </span>// Ensures that check is called at least once
+<span class="cstat-no" title="statement not covered">    process.nextTick(check); </span>// Ensures that check is called at least once
 &nbsp;
     // Generates a callback for the group
-<span class="cstat-no" title="statement not covered" >    return <span class="fstat-no" title="function not covered" >function () {</span></span>
-<span class="cstat-no" title="statement not covered" >      var index = counter++;</span>
-<span class="cstat-no" title="statement not covered" >      pending++;</span>
-<span class="cstat-no" title="statement not covered" >      return <span class="fstat-no" title="function not covered" >function () {</span></span>
-<span class="cstat-no" title="statement not covered" >        pending--;</span>
+<span class="cstat-no" title="statement not covered">    return <span class="fstat-no" title="function not covered">function () {</span></span>
+<span class="cstat-no" title="statement not covered">      var index = counter++;</span>
+<span class="cstat-no" title="statement not covered">      pending++;</span>
+<span class="cstat-no" title="statement not covered">      return <span class="fstat-no" title="function not covered">function () {</span></span>
+<span class="cstat-no" title="statement not covered">        pending--;</span>
         // Compress the error from any result to the first argument
-<span class="cstat-no" title="statement not covered" >        if (arguments[0]) {</span>
-<span class="cstat-no" title="statement not covered" >          error = arguments[0];</span>
+<span class="cstat-no" title="statement not covered">        if (arguments[0]) {</span>
+<span class="cstat-no" title="statement not covered">          error = arguments[0];</span>
         }
         // Send the other results as arguments
-<span class="cstat-no" title="statement not covered" >        result[index] = arguments[1];</span>
-<span class="cstat-no" title="statement not covered" >        if (!lock) { <span class="cstat-no" title="statement not covered" >check(); </span>}</span>
+<span class="cstat-no" title="statement not covered">        result[index] = arguments[1];</span>
+<span class="cstat-no" title="statement not covered">        if (!lock) { <span class="cstat-no" title="statement not covered">check(); </span>}</span>
       };
     };
   };
 &nbsp;
   // Start the engine an pass nothing to the first step.
-<span class="cstat-no" title="statement not covered" >  next();</span>
+<span class="cstat-no" title="statement not covered">  next();</span>
 }
 &nbsp;
 // Tack on leading and tailing steps for input and output and return
 // the whole thing as a function.  Basically turns step calls into function
 // factories.
-Step.fn = <span class="fstat-no" title="function not covered" >function StepFn() {</span>
-<span class="cstat-no" title="statement not covered" >  var steps = Array.prototype.slice.call(arguments);</span>
-<span class="cstat-no" title="statement not covered" >  return <span class="fstat-no" title="function not covered" >function () {</span></span>
-<span class="cstat-no" title="statement not covered" >    var args = Array.prototype.slice.call(arguments);</span>
+Step.fn = <span class="fstat-no" title="function not covered">function StepFn() {</span>
+<span class="cstat-no" title="statement not covered">  var steps = Array.prototype.slice.call(arguments);</span>
+<span class="cstat-no" title="statement not covered">  return <span class="fstat-no" title="function not covered">function () {</span></span>
+<span class="cstat-no" title="statement not covered">    var args = Array.prototype.slice.call(arguments);</span>
 &nbsp;
     // Insert a first step that primes the data stream
-<span class="cstat-no" title="statement not covered" >    var toRun = [<span class="fstat-no" title="function not covered" >function () {</span></span>
-<span class="cstat-no" title="statement not covered" >      this.apply(null, args);</span>
+<span class="cstat-no" title="statement not covered">    var toRun = [<span class="fstat-no" title="function not covered">function () {</span></span>
+<span class="cstat-no" title="statement not covered">      this.apply(null, args);</span>
     }].concat(steps);
 &nbsp;
     // If the last arg is a function add it as a last step
-<span class="cstat-no" title="statement not covered" >    if (typeof args[args.length-1] === 'function') {</span>
-<span class="cstat-no" title="statement not covered" >      toRun.push(args.pop());</span>
+<span class="cstat-no" title="statement not covered">    if (typeof args[args.length-1] === 'function') {</span>
+<span class="cstat-no" title="statement not covered">      toRun.push(args.pop());</span>
     }
 &nbsp;
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    Step.apply(null, toRun);</span>
+<span class="cstat-no" title="statement not covered">    Step.apply(null, toRun);</span>
   }
 }
 &nbsp;
 &nbsp;
 // Hook into commonJS module systems
-<span class="missing-if-branch" title="else path not taken" >E</span>if (typeof module !== 'undefined' &amp;&amp; "exports" in module) {
+<span class="missing-if-branch" title="else path not taken">E</span>if (typeof module !== 'undefined' &amp;&amp; "exports" in module) {
   module.exports = Step;
 }
 &nbsp;
 &nbsp;</pre></td></tr>
-</table></pre>
+</tbody></table></pre>
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a> at Tue Apr 11 2017 22:05:33 GMT+0000 (UTC)</div>
+    <div class="meta">Generated by <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a> at Mon Apr 17 2017 15:46:27 GMT+0000 (UTC)</div>
 </div>
-</body>
-</html>
+
+
+</body></html>
