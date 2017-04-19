@@ -1,4 +1,7 @@
-# test coverage for  [step (v1.0.0)](https://github.com/creationix/step#readme)  [![npm package](https://img.shields.io/npm/v/npmtest-step.svg?style=flat-square)](https://www.npmjs.org/package/npmtest-step) [![travis-ci.org build-status](https://api.travis-ci.org/npmtest/node-npmtest-step.svg)](https://travis-ci.org/npmtest/node-npmtest-step)
+# npmtest-step
+
+#### test coverage for  [step (v1.0.0)](https://github.com/creationix/step#readme)  [![npm package](https://img.shields.io/npm/v/npmtest-step.svg?style=flat-square)](https://www.npmjs.org/package/npmtest-step) [![travis-ci.org build-status](https://api.travis-ci.org/npmtest/node-npmtest-step.svg)](https://travis-ci.org/npmtest/node-npmtest-step)
+
 #### A simple control-flow library for node.JS that makes parallel execution, serial execution, and error handling painless.
 
 [![NPM](https://nodei.co/npm/step.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/step)
